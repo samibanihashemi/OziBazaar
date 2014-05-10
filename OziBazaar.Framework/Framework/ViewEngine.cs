@@ -9,7 +9,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Xml.Xsl;
-
+using OziBazaar.Framework.Model;
 namespace OziBazaar.Framework.Framework
 {
     public class ViewEngine
