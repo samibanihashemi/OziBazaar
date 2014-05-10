@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Add Product";
+}
+<script src="~/Scripts/jquery-2.1.0.js"></script>
+<script src="~/Scripts/dependentdropdown.js"></script>
+        @*<script lang="javascript" type="text/javascript">
+    $(function ()
+    {
+            $('select[data-dependsOn]').each(
+                                  function (index,control) {
+                                      var parentId = $(control).attr('data-dependsOn');
+                                      if (parentId != '') {
+                                          $('#' + parentId).change(function ParentChanged() {
+                                              SetDependentDropDownList(parentId,control.id);
+                                          });
+                                      }
+
+                                  }
+                              );
+    });
+    function SetDependentDropDownList(parentId, thisId) {
+        $.get('/Home/GetDependent', { type: $('#' + parentId).val() })
+            .success(function (data) {
+                $('#' + thisId).empty();
+                $.each(data,function (index, item) {
+                    $('#' + thisId).append($('<option></option>').val(item).html(item) );
+                });
+            })
+    }
+</script>*@
+<h2>Add Product</h2>
+@using(Html.BeginForm("CreateProduct","Home",FormMethod.Post,new{id="addProdForm"}))
+{
+<div>
+    @Html.Raw(HttpUtility.HtmlDecode(ViewBag.ProductInfo))
+</div>
+<input type="submit" value="Create Product" />
+}
+
