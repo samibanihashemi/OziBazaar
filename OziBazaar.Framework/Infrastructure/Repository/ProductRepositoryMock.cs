@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using OziBazaar.Framework.Model;
+using OziBazaar.Framework.Models;
 namespace OziBazaar.Framework.Infrastructure.Repository
 {
 

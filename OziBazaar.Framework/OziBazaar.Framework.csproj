@@ -116,11 +116,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Infrastructure\Repository\ProductRepositoryMock.cs" />
+    <Compile Include="Models\Ad.cs" />
+    <Compile Include="Models\AdStatistic.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Framework\ViewEngine.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProductAddView.cs" />
+    <Compile Include="Models\ProductFeatureAdd.cs" />
+    <Compile Include="Models\ProductFeatureView.cs" />
+    <Compile Include="Models\ProductView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

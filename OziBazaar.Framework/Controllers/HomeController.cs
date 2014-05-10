@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using OziBazaar.Framework.Model;
+using OziBazaar.Framework.Models;
 using OziBazaar.Framework.Infrastructure.Repository;
 namespace OziBazaar.Framework.Controllers
 {
@@ -43,12 +43,12 @@ namespace OziBazaar.Framework.Controllers
         public ActionResult CreateProduct()
         {
             var keys = Request.Form.AllKeys;
-            Product prod = new Product();
-            List<ProductFeature> features = new List<ProductFeature>();
-            foreach (var key in keys)
-            {
-                //features.Add(new ProductFeature{ke})
-            }
+           // Product prod = new Product();
+            //List<ProductFeature> features = new List<ProductFeature>();
+            //foreach (var key in keys)
+            //{
+            //    //features.Add(new ProductFeature{ke})
+            //}
             return RedirectToAction("Index");
         }
 
