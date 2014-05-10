@@ -5,10 +5,25 @@ using System.Web;
 
 namespace OziBazaar.Framework.Model
 {
+    public  class Ad
+    {
+        public int UserId { get; set; }
+        public int ProductId { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public bool IsActive { get; set; }
+    }
+    public class AdStatistic
+    {
+        public int AdId { get; set; }
+        public int TotalHit { get; set; }
+        public int TotalUnqiueHit { get; set; }
+        
+    }
     public class Product
     {
         public int Id { get; set; }
-      
+       
     }
     public class Feature
     {
