@@ -115,11 +115,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Framework\IRenderEngine.cs" />
+    <Compile Include="Framework\IXMLRenderable.cs" />
     <Compile Include="Infrastructure\Repository\ProductRepositoryMock.cs" />
     <Compile Include="Models\Ad.cs" />
     <Compile Include="Models\AdStatistic.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Framework\ViewEngine.cs" />
+    <Compile Include="Framework\XslRenderEngine.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

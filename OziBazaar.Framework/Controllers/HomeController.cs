@@ -10,18 +10,27 @@ namespace OziBazaar.Framework.Controllers
 {
     public class HomeController : Controller
     {
+        // inject by unity later on
+        private readonly IRenderEngine renderEngine = new XslRenderEngine();
+        public HomeController()
+        {
+
+        }
+        public HomeController(IRenderEngine renderEngine) : this()
+        {
+            this.renderEngine = renderEngine;
+        }
+
         public ActionResult Index()
         {
             return View();
         }
-
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
-
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -31,13 +40,13 @@ namespace OziBazaar.Framework.Controllers
         public ActionResult ViewProduct(int Id)
         {
             var productview = ProductRepositoryMock.GetProduct(Id);
-            ViewBag.ProductInfo=  ViewEngine.Render(productview);
+            ViewBag.ProductInfo=  renderEngine.Render(productview);
             return View();
         }
         public ActionResult AddProduct(int category)
         {
             var productAdd = ProductRepositoryMock.AddProduct(category);
-            ViewBag.ProductInfo = ViewEngine.Render(productAdd);
+            ViewBag.ProductInfo = renderEngine.Render(productAdd);
             return View();
         }
         public ActionResult CreateProduct()
@@ -51,7 +60,6 @@ namespace OziBazaar.Framework.Controllers
             //}
             return RedirectToAction("Index");
         }
-
         public  JsonResult GetDependent(string type)
         {
             List<string> types = new List<string>();
