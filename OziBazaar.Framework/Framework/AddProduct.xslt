@@ -28,6 +28,15 @@
                           </xsl:attribute>
                       </input>
                       </xsl:when>
+                                            
+                      <xsl:when test="$EditorType='TextArea'">
+                        <textarea rows="14"  columns="50">
+                          <xsl:attribute name="name">
+                              <xsl:value-of select="./@Name"/>
+                          </xsl:attribute>
+                          <xsl:value-of select="''"/>
+                       </textarea>
+                      </xsl:when>
                       
                       <xsl:when test="$EditorType='DropDown'">
                         <select>

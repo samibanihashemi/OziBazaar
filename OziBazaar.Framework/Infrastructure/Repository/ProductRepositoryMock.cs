@@ -41,7 +41,7 @@ namespace OziBazaar.Framework.Infrastructure.Repository
                 product.Features.Add(new ProductFeatureAdd { ProductId = 3, FeatureName = "Model", EditorType = "DropDown", ValueType = "string", IsMandatory = true, ValueEnum = new List<string> { "Toyota", "Mazda", "Ford", "BMW" } });
                 product.Features.Add(new ProductFeatureAdd { ProductId = 3, FeatureName = "Type", EditorType = "DropDown", ValueType = "string", IsMandatory = true, ValueEnum = new List<string> { }, DependsOn = "Model" });
                 product.Features.Add(new ProductFeatureAdd { ProductId = 3, FeatureName = "Name", EditorType = "TextBox", ValueType = "string", IsMandatory = true });
-                product.Features.Add(new ProductFeatureAdd { ProductId = 3, FeatureName = "Description", EditorType = "TextBox", ValueType = "string", IsMandatory = true });
+                product.Features.Add(new ProductFeatureAdd { ProductId = 3, FeatureName = "Description", EditorType = "TextArea", ValueType = "string", IsMandatory = true });
                 product.Features.Add(new ProductFeatureAdd { ProductId = 3, FeatureName = "Color", EditorType = "DropDown", ValueType = "string", IsMandatory = true, ValueEnum = new List<string> { "Red", "Green", "Yellow" } });
                 product.Features.Add(new ProductFeatureAdd { ProductId = 3, FeatureName = "Aumatic", EditorType = "CheckBox", ValueType = "bool", IsMandatory = true });
                 product.Features.Add(new ProductFeatureAdd { ProductId = 3, FeatureName = "Fuel", EditorType = "RadioButton", ValueType = "string", ValueEnum = new List<string> { "Petrol", "Disel", "LPG" } });
