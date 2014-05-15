@@ -33,6 +33,8 @@ namespace OziBazaar.Framework.Models
                 List<object> attributeList = new List<object>();
                 attributeList.Add(new XAttribute("Name", feature.FeatureName));
                 attributeList.Add(new XAttribute("EditorType", feature.EditorType));
+                if (feature.IsMandatory != null)
+                    attributeList.Add(new XAttribute("IsMandatory", feature.IsMandatory));
                 if (feature.ValueEnum != null)
                     attributeList.Add(SerializeList(feature.ValueEnum));
                 if (!string.IsNullOrEmpty(feature.DependsOn))
@@ -59,7 +61,6 @@ namespace OziBazaar.Framework.Models
             return root;
 
         }
-
 
         public string Xsl
         {

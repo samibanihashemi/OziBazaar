@@ -26,6 +26,9 @@
                           <xsl:attribute name="name">
                               <xsl:value-of select="./@Name"/>
                           </xsl:attribute>
+                          <xsl:attribute name="data-required">
+                            <xsl:value-of select="./@IsMandatory"/>
+                          </xsl:attribute>
                       </input>
                       </xsl:when>
                                             

@@ -152,7 +152,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
-    <Content Include="Scripts\dependentdropdown.js" />
+    <Content Include="Scripts\ozibazar.dependentdropdown.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -176,6 +176,7 @@
     <Content Include="Views\Home\ViewProduct.cshtml" />
     <Content Include="Views\Home\AddProduct.cshtml" />
     <Content Include="Scripts\jquery-2.1.0.min.map" />
+    <Content Include="Scripts\ozibazar.validation.js" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
