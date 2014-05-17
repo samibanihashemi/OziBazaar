@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using OziBazaar.Framework.Models;
-namespace OziBazaar.Framework.Infrastructure.Repository
+using OziBazaar.Web.Models;
+namespace OziBazaar.Web.Infrastructure.Repository
 {
 
     public static class ProductRepositoryMock

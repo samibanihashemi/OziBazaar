@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace OziBazaar.Framework.Framework
+namespace OziBazaar.Web.Framework
 {
     public interface IXMLRenderable
     {

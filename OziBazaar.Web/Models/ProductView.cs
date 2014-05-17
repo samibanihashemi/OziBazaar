@@ -1,22 +1,23 @@
-﻿using OziBazaar.Framework.Framework;
+﻿using OziBazaar.Framework.RenderEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Xml.Linq;
 
-namespace OziBazaar.Framework.Models
+namespace OziBazaar.Web.Models
 {
     public class ProductView : IXMLRenderable
     {
-        private readonly string renderTemplate = "OziBazaar.Framework.Framework.DefaultProduct.xslt";
+        private readonly string renderTemplate = "~/Templates/DefaultProduct.xslt";
         public ProductView()
         {
+            renderTemplate = HttpContext.Current.Server.MapPath(renderTemplate);
             Features = new List<ProductFeatureView>();
         }
         public ProductView(string template):this()
         {
-            renderTemplate = template;
+            renderTemplate = HttpContext.Current.Server.MapPath(template); ; ;
         }
         public List<ProductFeatureView> Features { get; set; }
 

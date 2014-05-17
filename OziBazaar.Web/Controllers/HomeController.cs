@@ -1,12 +1,12 @@
-﻿using OziBazaar.Framework.Framework;
+﻿using OziBazaar.Framework.RenderEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using OziBazaar.Framework.Models;
-using OziBazaar.Framework.Infrastructure.Repository;
-namespace OziBazaar.Framework.Controllers
+using OziBazaar.Web.Models;
+using OziBazaar.Web.Infrastructure.Repository;
+namespace OziBazaar.Web.Controllers
 {
     public class HomeController : Controller
     {

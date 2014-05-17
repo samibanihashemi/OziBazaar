@@ -9,8 +9,8 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Xml.Xsl;
-using OziBazaar.Framework.Models;
-namespace OziBazaar.Framework.Framework
+using OziBazaar.Web.Models;
+namespace OziBazaar.Web.Framework
 {
 
     public class XslRenderEngine : IRenderEngine

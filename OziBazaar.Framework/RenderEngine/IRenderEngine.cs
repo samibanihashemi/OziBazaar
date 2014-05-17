@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OziBazaar.Framework.Framework
+namespace OziBazaar.Framework.RenderEngine
 {
     public interface IRenderEngine
     {

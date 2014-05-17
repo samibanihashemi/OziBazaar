@@ -1,22 +1,23 @@
-﻿using OziBazaar.Framework.Framework;
+﻿using OziBazaar.Framework.RenderEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Xml.Linq;
 
-namespace OziBazaar.Framework.Models
+namespace OziBazaar.Web.Models
 {
     public class ProductAddView : IXMLRenderable
     {
-        private readonly string renderTemplate = "OziBazaar.Framework.Framework.AddProduct.xslt";
+        private readonly string renderTemplate = "~/Templates/AddProduct.xslt";
         public ProductAddView()
         {
+            renderTemplate = HttpContext.Current.Server.MapPath(renderTemplate);
             Features = new List<ProductFeatureAdd>();
         }
         public ProductAddView(string template):this()
         {
-            renderTemplate = template;
+            renderTemplate = HttpContext.Current.Server.MapPath(template); ;
         }
         public List<ProductFeatureAdd> Features { get; set; }
 
@@ -33,7 +34,7 @@ namespace OziBazaar.Framework.Models
                 List<object> attributeList = new List<object>();
                 attributeList.Add(new XAttribute("Name", feature.FeatureName));
                 attributeList.Add(new XAttribute("EditorType", feature.EditorType));
-                if (feature.IsMandatory != null)
+                if (feature.IsMandatory )
                     attributeList.Add(new XAttribute("IsMandatory", feature.IsMandatory));
                 if (feature.ValueEnum != null)
                     attributeList.Add(SerializeList(feature.ValueEnum));

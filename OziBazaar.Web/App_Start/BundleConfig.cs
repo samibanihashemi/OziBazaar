@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace OziBazaar.Framework
+namespace OziBazaar.Web
 {
     public class BundleConfig
     {
