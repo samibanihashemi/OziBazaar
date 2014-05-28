@@ -11,14 +11,13 @@ namespace OziBazaar.Web.Controllers
     public class HomeController : Controller
     {
         // inject by unity later on
-        private readonly IRenderEngine renderEngine = new XslRenderEngine();
-        public HomeController()
-        {
-
-        }
-        public HomeController(IRenderEngine renderEngine) : this()
+        private readonly IRenderEngine renderEngine;
+        private readonly IProductRepository productRepository;
+      
+        public HomeController(IRenderEngine renderEngine,IProductRepository productRepository) 
         {
             this.renderEngine = renderEngine;
+            this.productRepository = productRepository;
         }
 
         public ActionResult Index()
@@ -39,13 +38,13 @@ namespace OziBazaar.Web.Controllers
         }
         public ActionResult ViewProduct(int Id)
         {
-            var productview = ProductRepositoryMock.GetProduct(Id);
+            var productview = productRepository.GetProduct(Id);
             ViewBag.ProductInfo=  renderEngine.Render(productview);
             return View();
         }
         public ActionResult AddProduct(int category)
         {
-            var productAdd = ProductRepositoryMock.AddProduct(category);
+            var productAdd = productRepository.AddProduct(category);
             ViewBag.ProductInfo = renderEngine.Render(productAdd);
             return View();
         }
@@ -60,35 +59,11 @@ namespace OziBazaar.Web.Controllers
             //}
             return RedirectToAction("Index");
         }
-        public  JsonResult GetDependent(string type)
-        {
-            List<string> types = new List<string>();
-            if (type.ToLower() == "toyota")
-            {
-                types.Add("Camary");
-                types.Add("Corola");
-                types.Add("yari");
-            }
-            else  if (type.ToLower() == "mazda")
-                {
-                    types.Add("mazda2");
-                    types.Add("mazda 3");
-                    types.Add("mazda 6");
-                }
-            else if (type.ToLower() == "iphone")
-            {
-                types.Add("iphone 3");
-                types.Add("iphone 4");
-                types.Add("iphone 5");
-            }
-            else if (type.ToLower() == "samsung")
-            {
-                types.Add("Galxy S3");
-                types.Add("Glaxy S4");
-                types.Add("Galaxy Note");
-            }
-            return Json(types,JsonRequestBehavior.AllowGet);
 
+        public ActionResult AdList()
+        {
+            var lst=productRepository.GetAdvertisementsList();
+            return View(lst);
         }
     }
 }

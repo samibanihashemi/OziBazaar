@@ -12,7 +12,7 @@
                       );
 });
 function SetDependentDropDownList(parentId, thisId) {
-    $.get('/Home/GetDependent', { type: $('#' + parentId).val() })
+    $.get('/api/CategoryData/'+$('#' + parentId).val())
         .success(function (data) {
             $('#' + thisId).empty();
             $.each(data, function (index, item) {
