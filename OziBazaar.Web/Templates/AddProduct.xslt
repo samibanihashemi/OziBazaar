@@ -24,7 +24,7 @@
                       <xsl:when test="$EditorType='TextBox'">
                         <input type="text">
                           <xsl:attribute name="name">
-                              <xsl:value-of select="./@Name"/>
+                              <xsl:value-of select="./@PropertyId"/>
                           </xsl:attribute>
                           <xsl:attribute name="data-required">
                             <xsl:value-of select="./@IsMandatory"/>
@@ -35,7 +35,7 @@
                       <xsl:when test="$EditorType='TextArea'">
                         <textarea rows="14"  columns="50">
                           <xsl:attribute name="name">
-                              <xsl:value-of select="./@Name"/>
+                              <xsl:value-of select="./@PropertyId"/>
                           </xsl:attribute>
                           <xsl:value-of select="''"/>
                        </textarea>
@@ -44,7 +44,7 @@
                       <xsl:when test="$EditorType='DropDown'">
                         <select>
                           <xsl:attribute name="name">
-                            <xsl:value-of select="./@Name"/>
+                            <xsl:value-of select="./@PropertyId"/>
                           </xsl:attribute>
                           <xsl:attribute name="id">
                             <xsl:value-of select="./@Name"/>
@@ -64,7 +64,7 @@
                       <xsl:when test="$EditorType='CheckBox'">
                         <input type="checkbox">
                           <xsl:attribute name="name">
-                            <xsl:value-of select="./@Name"/>
+                            <xsl:value-of select="./@PropertyId"/>
                           </xsl:attribute>
                         </input>
                       </xsl:when>
@@ -73,7 +73,7 @@
                         <xsl:for-each select="./EnumValue/Value">
                           <input type="radio">
                             <xsl:attribute name="name">
-                              <xsl:value-of select="$FeatureName"/>
+                              <xsl:value-of select="./@PropertyId"/>
                             </xsl:attribute>
                             <xsl:value-of select="."/>
                           </input>

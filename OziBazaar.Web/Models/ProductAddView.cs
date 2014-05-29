@@ -32,6 +32,7 @@ namespace OziBazaar.Web.Models
                     feature.ValueEnum = new List<string>();
 
                 List<object> attributeList = new List<object>();
+                attributeList.Add(new XAttribute("PropertyId", feature.PropertyId));
                 attributeList.Add(new XAttribute("Name", feature.FeatureName));
                 attributeList.Add(new XAttribute("EditorType", feature.EditorType));
                 if (feature.IsMandatory )

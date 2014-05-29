@@ -5,12 +5,13 @@ using System.Web;
 
 namespace OziBazaar.Web.Models
 {
-  
-    //public class Product
-    //{
-    //    public int Id { get; set; }
-       
-    //}
+
+    public class Product
+    {
+        public int Id { get; set; }
+        public IEnumerable<ProductFeature> Features { get; set; }
+
+    }
     //public class Feature
     //{
     //    public int Id { get; set; }

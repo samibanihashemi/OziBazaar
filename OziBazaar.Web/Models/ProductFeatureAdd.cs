@@ -8,6 +8,7 @@ namespace OziBazaar.Web.Models
     public class ProductFeatureAdd
     {
         public int ProductId { get; set; }
+        public int PropertyId { get; set; }
         public string FeatureName { get; set; }
         public string EditorType { get; set; }
         public string ValueType { get; set; }
@@ -15,5 +16,10 @@ namespace OziBazaar.Web.Models
         public bool IsMandatory { get; set; }
         public string DependsOn { get; set; }
         public List<string> ValueEnum { get; set; }
+    }
+    public class ProductFeature
+    {
+        public string Key { get; set; }
+        public string Value { get; set; }
     }
 }

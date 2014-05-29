@@ -51,12 +51,13 @@ namespace OziBazaar.Web.Controllers
         public ActionResult CreateProduct()
         {
             var keys = Request.Form.AllKeys;
-           // Product prod = new Product();
-            //List<ProductFeature> features = new List<ProductFeature>();
-            //foreach (var key in keys)
-            //{
-            //    //features.Add(new ProductFeature{ke})
-            //}
+            List<ProductFeature> features = new List<ProductFeature>();
+            foreach (var key in keys)
+            {
+                features.Add(new ProductFeature { Key = key, Value = Request[key] });
+            }
+            Product prod = new Product() { Features=features};
+            productRepository.AddProduct(prod);
             return RedirectToAction("Index");
         }
 

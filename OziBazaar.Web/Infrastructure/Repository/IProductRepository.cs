@@ -14,6 +14,8 @@ namespace OziBazaar.Web.Infrastructure.Repository
         IEnumerable<Ad> GetAdvertisementsList();
 
         IEnumerable<Category> GetAllCategories();
+
+        void AddProduct(Product product);
     }
    
 }
