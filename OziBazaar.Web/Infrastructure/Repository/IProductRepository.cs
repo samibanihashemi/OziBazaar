@@ -12,9 +12,7 @@ namespace OziBazaar.Web.Infrastructure.Repository
         ProductView GetProduct(int productId);
         ProductAddView AddProduct(int CategoryId);
         IEnumerable<Ad> GetAdvertisementsList();
-
         IEnumerable<Category> GetAllCategories();
-
         void AddProduct(Product product);
     }
    
