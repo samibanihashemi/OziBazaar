@@ -1,7 +1,11 @@
-﻿
-@{
-    ViewBag.Title = "EditProduct";
+﻿@{
+    ViewBag.Title = "Edit Product";
 }
 
-<h2>EditProduct</h2>
-
+<h2>ViewProduct</h2>
+<div>
+    @Html.Raw(HttpUtility.HtmlDecode(ViewBag.ProductInfo))
+</div>
+<td>
+    @Html.ActionLink("Back To List", "AdList", "Ad")
+</td>

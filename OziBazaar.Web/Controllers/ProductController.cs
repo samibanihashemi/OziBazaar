@@ -34,6 +34,8 @@ namespace OziBazaar.Web.Controllers
         }
         public ActionResult EditProduct(int Id)
         {
+            var productview = productRepository.EditProduct(Id);
+            ViewBag.ProductInfo = renderEngine.Render(productview);
             return View();
         }
         public ActionResult AddProduct(int category)

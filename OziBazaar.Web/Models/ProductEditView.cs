@@ -1,5 +1,4 @@
-﻿using OziBazaar.Framework.RenderEngine;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,10 +6,10 @@ using System.Xml.Linq;
 
 namespace OziBazaar.Web.Models
 {
-    public class ProductAddView : IXMLRenderable
+    public class ProductEditView : ProductAddView
     {
-        private string renderTemplate= "~/Templates/AddProduct.xslt";
-        protected virtual string RenderTemplate
+        private string renderTemplate = "~/Templates/EditProduct.xslt";
+        protected override string RenderTemplate
         {
             get
             {
@@ -18,24 +17,14 @@ namespace OziBazaar.Web.Models
             }
             set
             {
-                renderTemplate=value;
+                renderTemplate = value;
             }
         }
-        public ProductAddView()
-        {
-            renderTemplate = HttpContext.Current.Server.MapPath(RenderTemplate);
-            Features = new List<ProductFeatureAdd>();
-        }
-        public ProductAddView(string template):this()
-        {
-            renderTemplate = HttpContext.Current.Server.MapPath(template); ;
-        }
-        public List<ProductFeatureAdd> Features { get; set; }
-        public virtual System.Xml.Linq.XDocument Render()
+        public override System.Xml.Linq.XDocument Render()
         {
             List<XElement> features = new List<XElement>();
-
-            foreach (var feature in Features)
+           
+            foreach (var feature in Features.Cast<ProductFeatureEdit>())
             {
                 var enumValue = string.Empty;
                 if (feature.ValueEnum == null)
@@ -44,11 +33,17 @@ namespace OziBazaar.Web.Models
                 List<object> attributeList = new List<object>();
                 attributeList.Add(new XAttribute("PropertyId", feature.PropertyId));
                 attributeList.Add(new XAttribute("Name", feature.FeatureName));
+                
+                if(feature.Value != null)
+                    attributeList.Add(new XAttribute("Value", feature.Value));
+
                 attributeList.Add(new XAttribute("EditorType", feature.EditorType));
-                if (feature.IsMandatory )
+                if (feature.IsMandatory)
                     attributeList.Add(new XAttribute("IsMandatory", feature.IsMandatory));
+
                 if (feature.ValueEnum != null)
                     attributeList.Add(SerializeList(feature.ValueEnum));
+
                 if (!string.IsNullOrEmpty(feature.DependsOn))
                     attributeList.Add(new XAttribute("DependsOn", feature.DependsOn));
 
@@ -59,24 +54,6 @@ namespace OziBazaar.Web.Models
             return inputXml;
 
         }
-        protected static XElement SerializeList(List<string> lst)
-        {
-            string name = "Value";
-
-            XElement root = new XElement("EnumValue");
-            int cnt = 0;
-            foreach (var item in lst)
-            {
-                root.Add(new XElement(name, item.ToString()));
-                cnt++;
-            }
-            return root;
-
-        }
-        public string Xsl
-        {
-            get { return renderTemplate; }
-        }
+     
     }
-   
 }

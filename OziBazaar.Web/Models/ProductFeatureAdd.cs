@@ -17,6 +17,10 @@ namespace OziBazaar.Web.Models
         public string DependsOn { get; set; }
         public List<string> ValueEnum { get; set; }
     }
+    public class ProductFeatureEdit : ProductFeatureAdd
+    {
+        public string Value { get; set; }
+    }
     public class ProductFeature
     {
         public string Key { get; set; }

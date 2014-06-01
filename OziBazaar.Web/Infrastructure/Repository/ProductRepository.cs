@@ -62,6 +62,35 @@ namespace OziBazaar.Web.Infrastructure.Repository
             return product;
         }
 
+        public ProductEditView EditProduct(int productId)
+        {
+            ProductEditView product = new ProductEditView();
+            if (productId == 1)// car
+            {
+                product.Features.Add(new ProductFeatureEdit { ProductId = 1, PropertyId = 3, FeatureName = "Model", EditorType = "DropDown", ValueType = "string", IsMandatory = true, ValueEnum = new List<string> { "Toyota", "Mazda", "Ford", "BMW" },Value="Toyota" });
+                product.Features.Add(new ProductFeatureEdit { ProductId = 1, PropertyId = 5, FeatureName = "Type", EditorType = "DropDown", ValueType = "string", IsMandatory = true, ValueEnum = new List<string> { }, DependsOn = "Model" ,Value="Camary"});
+                product.Features.Add(new ProductFeatureEdit { ProductId = 1, PropertyId = 1, FeatureName = "Name", EditorType = "TextBox", ValueType = "string", IsMandatory = true, Value = "Toyota Camary Special" });
+                product.Features.Add(new ProductFeatureEdit { ProductId = 1, PropertyId = 4, FeatureName = "Description", EditorType = "TextArea", ValueType = "string", IsMandatory = true ,Value="In a very good condition"});
+                product.Features.Add(new ProductFeatureEdit { ProductId = 1, PropertyId = 2, FeatureName = "Color", EditorType = "DropDown", ValueType = "string", IsMandatory = true, ValueEnum = new List<string> { "Red", "Green", "Yellow" } });
+                product.Features.Add(new ProductFeatureEdit { ProductId = 1, PropertyId = 8, FeatureName = "Aumatic", EditorType = "CheckBox", ValueType = "bool", IsMandatory = true,  Value="checked"});
+                product.Features.Add(new ProductFeatureEdit { ProductId = 1, PropertyId = 9, FeatureName = "Fuel", EditorType = "RadioButton", ValueType = "string", ValueEnum = new List<string> { "Petrol", "Disel", "LPG" } ,Value="Petrol"});
+                product.Features.Add(new ProductFeatureEdit { ProductId = 1, PropertyId = 10, FeatureName = "Kilio Metere", EditorType = "TextBox", ValueType = "string" ,Value="35000 Km"});
+                product.Features.Add(new ProductFeatureEdit { ProductId = 1, PropertyId = 11, FeatureName = "Feul Consumption", EditorType = "TextBox", ValueType = "string", IsMandatory = true,Value="6 Litter per 100 KM" });
+            }
+            if (productId == 2)//Mobile
+            {
+                product.Features.Add(new ProductFeatureEdit { ProductId = 2, PropertyId = 1, FeatureName = "Name", EditorType = "TextBox", ValueType = "string", IsMandatory = true ,Value="Samsung"});
+                product.Features.Add(new ProductFeatureEdit { ProductId = 2, PropertyId = 4, FeatureName = "Description", EditorType = "TextBox", ValueType = "string", IsMandatory = true ,Value="In a very good condition"});
+                product.Features.Add(new ProductFeatureEdit { ProductId = 2, PropertyId = 2, FeatureName = "Color", EditorType = "DropDown", ValueType = "string", IsMandatory = true, ValueEnum = new List<string> { "Black", "White", "Red" },Value="Red" });
+                product.Features.Add(new ProductFeatureEdit { ProductId = 2, PropertyId = 3, FeatureName = "Model", EditorType = "DropDown", ValueType = "string", IsMandatory = true, ValueEnum = new List<string> { "Iphone", "Samsung", "HTC" }, Value = "Samsung" });
+                product.Features.Add(new ProductFeatureEdit { ProductId = 2, PropertyId = 5, FeatureName = "Type", EditorType = "DropDown", ValueType = "string", IsMandatory = true, DependsOn = "Model",Value="Galxy s5" });
+                product.Features.Add(new ProductFeatureEdit { ProductId = 2, PropertyId = 6, FeatureName = "Battery Life", EditorType = "TextBox", ValueType = "string", IsMandatory = true,Value="200 hrs" });
+                product.Features.Add(new ProductFeatureEdit { ProductId = 2, PropertyId = 7, FeatureName = "HeadSet", EditorType = "CheckBox", ValueType = "bool", IsMandatory = true ,Value="checked"});
+            }
+
+            return product;
+
+        }
 
         public IEnumerable<Ad> GetAdvertisementsList()
         {
@@ -78,8 +107,6 @@ namespace OziBazaar.Web.Infrastructure.Repository
 
             return categories;
         }
-
-
 
         public void AddProduct(Product product)
         {

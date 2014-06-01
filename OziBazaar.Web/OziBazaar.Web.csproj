@@ -165,6 +165,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductAddView.cs" />
+    <Compile Include="Models\ProductEditView.cs" />
     <Compile Include="Models\ProductFeatureAdd.cs" />
     <Compile Include="Models\ProductFeatureView.cs" />
     <Compile Include="Models\ProductView.cs" />
@@ -179,6 +180,10 @@
     <Content Include="Content\Image\mobile2.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Templates\EditProduct.xslt">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Templates\DefaultProduct.xslt">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
