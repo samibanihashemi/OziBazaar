@@ -2,10 +2,18 @@
     ViewBag.Title = "Edit Product";
 }
 
-<h2>ViewProduct</h2>
+<script src="~/Scripts/jquery-2.1.0.js"></script>
+<script src="~/Scripts/ozibazar.dependentdropdown.js"></script>
+<script src="~/Scripts/ozibazar.validation.js"></script>
+
+<h2>Edit Product</h2>
+@using (Html.BeginForm("UpdateProduct", "Product", FormMethod.Post, new { id = "editProdForm" }))
+{
+@Html.AntiForgeryToken()
 <div>
     @Html.Raw(HttpUtility.HtmlDecode(ViewBag.ProductInfo))
 </div>
-<td>
-    @Html.ActionLink("Back To List", "AdList", "Ad")
-</td>
+<input type="submit" value="Create Product" />
+<input type="reset" value="Clear"/>
+@Html.ActionLink("Back To List", "AdList", "Ad")
+}

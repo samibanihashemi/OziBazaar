@@ -13,6 +13,7 @@
         <xsl:for-each select="Features/Feature">
            <xsl:variable name="EditorType" select="./@EditorType" />
            <xsl:variable name="FeatureName" select="./@Name" />
+           <xsl:variable name="Value" select="./@Value" />
           <xsl:variable name="DependsOn" select="./@DependsOn" />
             <tr >
               <td>
@@ -59,7 +60,11 @@
                           <option value="" text="--select--"></option>
                           <xsl:for-each select="./EnumValue/Value">
                             <option>
-                              <xsl:value-of select="."/>
+                              <xsl:variable name="CurrentValue" select="." />                              
+                              <xsl:if test="$CurrentValue=$Value">
+                                <xsl:attribute name="SELECTED"></xsl:attribute>
+                              </xsl:if>
+                             <xsl:value-of select="."/>
                             </option>
                           </xsl:for-each>
                         </select>
@@ -70,6 +75,10 @@
                           <xsl:attribute name="name">
                             <xsl:value-of select="./@PropertyId"/>
                           </xsl:attribute>
+                          <xsl:if test="$Value='checked'">
+                              <xsl:attribute name="checked"></xsl:attribute>
+                            </xsl:if>
+
                         </input>
                       </xsl:when>
                       
@@ -79,6 +88,10 @@
                             <xsl:attribute name="name">
                               <xsl:value-of select="./@PropertyId"/>
                             </xsl:attribute>
+                            <xsl:variable name="CurrentValue" select="." />                              
+                            <xsl:if test="$CurrentValue=$Value">
+                              <xsl:attribute name="checked"></xsl:attribute>
+                            </xsl:if>
                             <xsl:value-of select="."/>
                           </input>
                           <br/>

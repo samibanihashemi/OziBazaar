@@ -9,12 +9,13 @@ namespace OziBazaar.Web.Infrastructure.Repository
 {
     public interface IProductRepository
     {
-        ProductView GetProduct(int productId);
-        ProductAddView AddProduct(int CategoryId);
-        ProductEditView EditProduct(int productId);       
-        IEnumerable<Ad> GetAdvertisementsList();
+        ProductView           GetProduct(int productId);
+        ProductAddView        AddProduct(int CategoryId);
+        ProductEditView       EditProduct(int productId);       
+        IEnumerable<Ad>       GetAdvertisementsList();
         IEnumerable<Category> GetAllCategories();
-        void AddProduct(Product product);
+        void                  AddProduct(Product product);
+        void                  UpdateProduct(Product product);
     }
    
 }

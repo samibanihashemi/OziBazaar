@@ -71,7 +71,7 @@ namespace OziBazaar.Web.Infrastructure.Repository
                 product.Features.Add(new ProductFeatureEdit { ProductId = 1, PropertyId = 5, FeatureName = "Type", EditorType = "DropDown", ValueType = "string", IsMandatory = true, ValueEnum = new List<string> { }, DependsOn = "Model" ,Value="Camary"});
                 product.Features.Add(new ProductFeatureEdit { ProductId = 1, PropertyId = 1, FeatureName = "Name", EditorType = "TextBox", ValueType = "string", IsMandatory = true, Value = "Toyota Camary Special" });
                 product.Features.Add(new ProductFeatureEdit { ProductId = 1, PropertyId = 4, FeatureName = "Description", EditorType = "TextArea", ValueType = "string", IsMandatory = true ,Value="In a very good condition"});
-                product.Features.Add(new ProductFeatureEdit { ProductId = 1, PropertyId = 2, FeatureName = "Color", EditorType = "DropDown", ValueType = "string", IsMandatory = true, ValueEnum = new List<string> { "Red", "Green", "Yellow" } });
+                product.Features.Add(new ProductFeatureEdit { ProductId = 1, PropertyId = 2, FeatureName = "Color", EditorType = "DropDown", ValueType = "string", IsMandatory = true, ValueEnum = new List<string> { "Red", "Green", "Yellow" } ,Value="Red"});
                 product.Features.Add(new ProductFeatureEdit { ProductId = 1, PropertyId = 8, FeatureName = "Aumatic", EditorType = "CheckBox", ValueType = "bool", IsMandatory = true,  Value="checked"});
                 product.Features.Add(new ProductFeatureEdit { ProductId = 1, PropertyId = 9, FeatureName = "Fuel", EditorType = "RadioButton", ValueType = "string", ValueEnum = new List<string> { "Petrol", "Disel", "LPG" } ,Value="Petrol"});
                 product.Features.Add(new ProductFeatureEdit { ProductId = 1, PropertyId = 10, FeatureName = "Kilio Metere", EditorType = "TextBox", ValueType = "string" ,Value="35000 Km"});
@@ -109,6 +109,9 @@ namespace OziBazaar.Web.Infrastructure.Repository
         }
 
         public void AddProduct(Product product)
+        {
+        }
+        public void UpdateProduct(Product product)
         {
         }
     }

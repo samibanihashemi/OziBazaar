@@ -56,6 +56,18 @@ namespace OziBazaar.Web.Controllers
             productRepository.AddProduct(prod);
             return RedirectToAction("Index");
         }
+        public  ActionResult UpdateProduct()
+        {
+            var keys = Request.Form.AllKeys;
+            List<ProductFeature> features = new List<ProductFeature>();
+            foreach (var key in keys)
+            {
+                features.Add(new ProductFeature { Key = key, Value = Request[key] });
+            }
+            Product prod = new Product() { Features = features };
+            productRepository.UpdateProduct(prod);
+            return RedirectToAction("Index");
+        }
 
 	}
 }

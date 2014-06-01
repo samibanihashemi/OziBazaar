@@ -9,9 +9,12 @@
 <h2>Add Product</h2>
 @using(Html.BeginForm("CreateProduct","Product",FormMethod.Post,new{id="addProdForm"}))
 {
+@Html.AntiForgeryToken()
 <div>
     @Html.Raw(HttpUtility.HtmlDecode(ViewBag.ProductInfo))
 </div>
 <input type="submit" value="Create Product" />
+<input type="reset" value="Clear"/>
+@Html.ActionLink("Back To List", "AdList", "Ad")
 }
 
