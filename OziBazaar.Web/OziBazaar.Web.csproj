@@ -154,6 +154,7 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\AdController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Infrastructure\Repository\IProductRepository.cs" />
     <Compile Include="Infrastructure\Repository\ProductRepository.cs" />
     <Compile Include="Models\Ad.cs" />
@@ -219,12 +220,13 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\ViewProduct.cshtml" />
-    <Content Include="Views\Home\AddProduct.cshtml" />
+    <Content Include="Views\Product\ViewProduct.cshtml" />
+    <Content Include="Views\Product\AddProduct.cshtml" />
     <Content Include="Scripts\jquery-2.1.0.min.map" />
     <Content Include="Scripts\ozibazar.validation.js" />
-    <Content Include="Views\Home\AdList.cshtml" />
+    <Content Include="Views\Ad\AdList.cshtml" />
     <Content Include="Views\Ad\AddAd.cshtml" />
+    <Content Include="Views\Product\EditProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OziBazaar.Framework\OziBazaar.Framework.csproj">

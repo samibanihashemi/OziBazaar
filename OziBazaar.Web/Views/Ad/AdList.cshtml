@@ -29,7 +29,7 @@
             @Html.DisplayFor(modelItem => item.Title)
         </td>
          <td>
-            @Html.ActionLink("View", "ViewProduct", new { id = item.ProductId })
+            @Html.ActionLink("View", "ViewProduct","Product", new { id = item.ProductId },null)
         </td>
     </tr>
 }

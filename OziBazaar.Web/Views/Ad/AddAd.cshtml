@@ -5,7 +5,7 @@
 
 <h2>Add Advertisement</h2>
 
-@using (Html.BeginForm("AddProduct","Home")) 
+@using (Html.BeginForm("AddProduct","Product")) 
 {
     @Html.AntiForgeryToken()
     
@@ -29,5 +29,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "AdList","Home")
+    @Html.ActionLink("Back to List", "AdList","Ad")
 </div>

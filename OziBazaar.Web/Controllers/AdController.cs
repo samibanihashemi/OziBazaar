@@ -21,6 +21,11 @@ namespace OziBazaar.Web.Controllers
         {
             return View();
         }
+        public ActionResult AdList()
+        {
+            var lst = productRepository.GetAdvertisementsList();
+            return View(lst);
+        }
         public ActionResult AddAd()
         {
              ViewBag.Categories= new SelectList( productRepository.GetAllCategories(),"Id","Name");
