@@ -11,7 +11,7 @@
           Product information:
         </p>
        
-        <table style="width:100%;border:1px solid gray;">
+        <table class="table table-striped table-bordered table-condensed">
         <xsl:for-each select="Features/Feature">
           <xsl:variable name="FeatureIndex" select="position() - 1"/>
           <xsl:variable name="IsImage" select="./@Name" />

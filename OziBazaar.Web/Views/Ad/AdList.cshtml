@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "AddAd","Ad")
 </p>
-<table class="table">
+<table class="table table-striped table-bordered table-condensed">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ProductId)
@@ -21,21 +21,22 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-         <td>
-            @Html.ActionLink("View", "ViewProduct","Product", new { id = item.ProductId },null)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditProduct", "Product", new { id = item.ProductId }, null)
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.ActionLink("View", "ViewProduct", "Product", new { id = item.ProductId }, null)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditProduct", "Product", new { id = item.ProductId }, null)
+            </td>
+        </tr>
+    }
 
 </table>

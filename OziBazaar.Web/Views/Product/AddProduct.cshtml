@@ -13,8 +13,8 @@
 <div>
     @Html.Raw(HttpUtility.HtmlDecode(ViewBag.ProductInfo))
 </div>
-<input type="submit" value="Create Product" />
-<input type="reset" value="Clear"/>
-@Html.ActionLink("Back To List", "AdList", "Ad")
+    <input type="submit" value="Create Product" class="btn btn-primary" />
+    <input type="reset" value="Clear" class="btn btn-primary" />
+    @Html.ActionLink("Back To List", "AdList", new { controller = "Ad" }, new { @class = "btn btn-primary" })
 }
 
