@@ -6,7 +6,7 @@ using System.Web;
 namespace OziBazaar.Web.Models
 {
 
-    public class Product
+    public class ProductModel
     {
         public int Id { get; set; }
         public IEnumerable<ProductFeature> Features { get; set; }

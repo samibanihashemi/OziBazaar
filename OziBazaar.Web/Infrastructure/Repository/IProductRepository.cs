@@ -14,8 +14,8 @@ namespace OziBazaar.Web.Infrastructure.Repository
         ProductEditView       EditProduct(int productId);       
         IEnumerable<Ad>       GetAdvertisementsList();
         IEnumerable<Category> GetAllCategories();
-        void                  AddProduct(Product product);
-        void                  UpdateProduct(Product product);
+        void                  AddProduct(ProductModel product);
+        void                  UpdateProduct(ProductModel product);
     }
    
 }

@@ -42,7 +42,7 @@ namespace OziBazaar.Web.Controllers
         {
             var productAdd = productRepository.AddProduct(category);
             ViewBag.ProductInfo = renderEngine.Render(productAdd);
-            return View();
+            return RedirectToAction("AdList","Ad");
         }
         public ActionResult CreateProduct()
         {
@@ -52,7 +52,7 @@ namespace OziBazaar.Web.Controllers
             {
                 features.Add(new ProductFeature { Key = key, Value = Request[key] });
             }
-            Product prod = new Product() { Features = features };
+            ProductModel prod = new ProductModel() { Features = features };
             productRepository.AddProduct(prod);
             return RedirectToAction("Index");
         }
@@ -64,7 +64,7 @@ namespace OziBazaar.Web.Controllers
             {
                 features.Add(new ProductFeature { Key = key, Value = Request[key] });
             }
-            Product prod = new Product() { Features = features };
+            ProductModel prod = new ProductModel() { Features = features };
             productRepository.UpdateProduct(prod);
             return RedirectToAction("Index");
         }
