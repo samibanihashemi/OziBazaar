@@ -70,6 +70,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OziBazaarModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="OziBazaarModel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OziBazaarModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Product.cs">
       <DependentUpon>OziBazaarModel.tt</DependentUpon>
     </Compile>
@@ -90,6 +95,18 @@
       <DependentUpon>OziBazaarModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">
+      <DependentUpon>OziBazaarModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserProfile.cs">
+      <DependentUpon>OziBazaarModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="webpages_Membership.cs">
+      <DependentUpon>OziBazaarModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="webpages_OAuthMembership.cs">
+      <DependentUpon>OziBazaarModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="webpages_Roles.cs">
       <DependentUpon>OziBazaarModel.tt</DependentUpon>
     </Compile>
     <Compile Include="WishList.cs">
@@ -114,7 +131,7 @@
     <None Include="OziBazaarModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>OziBazaarModel.edmx</DependentUpon>
-      <LastGenOutput>OziBazaarModel.cs</LastGenOutput>
+      <LastGenOutput>OziBazaarModel1.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

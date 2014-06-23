@@ -10,6 +10,11 @@
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
+            <div class="float-right">
+                <section id="login">
+                    @Html.Partial("_LoginPartial")
+                </section>
+            </div>
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -24,8 +29,12 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Advertisements", "AdList", "Ad")</li>
+                    <li>@Html.ActionLink("Wish List", "Index", "WishList")</li>
                 </ul>
             </div>
+            <div >
+             @{ Html.RenderAction("ProductGroupMenu", "Nav"); }
+           </div>
         </div>
     </div>
     <div class="container body-content">

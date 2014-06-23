@@ -11,7 +11,7 @@ namespace OziBazaar.Web.Infrastructure.Repository
     {
         private OziBazaarEntities dbContext = new OziBazaarEntities();
 
-        public  ProductView GetProduct(int productId)
+        public ProductView GetProduct(int productId)
         {
             try
             {
@@ -208,7 +208,7 @@ namespace OziBazaar.Web.Infrastructure.Repository
                 }
                 adv.Product = product;
                 adv.OwnerID = 1;
-                adv.Price = "1000";
+                adv.Price = 1000;
                 adv.Title = "product";
 
                 dbContext.Advertisements.Add(adv);
@@ -226,7 +226,7 @@ namespace OziBazaar.Web.Infrastructure.Repository
                               where property.KeyName == propertyName
                               select property.PropertyID).FirstOrDefault();
             return propertyId;
-      }
+        }
 
         public ProductEditView EditProduct(int productId)
         {
@@ -236,6 +236,48 @@ namespace OziBazaar.Web.Infrastructure.Repository
         public void UpdateProduct(ProductModel product)
         {
             throw new NotImplementedException();
+        }
+
+        public List<WishListViewModel> GetWishList(string userName)
+        {
+            try
+            {
+                List<WishListViewModel> wishListViewModels =
+                    (from userProfile in dbContext.UserProfiles
+                     where userProfile.UserName == userName
+                     join wishList in dbContext.WishLists
+                         on userProfile.UserId equals wishList.UserID
+                     join advertisement in dbContext.Advertisements
+                         on wishList.AdvertizementID equals advertisement.AdvertisementID
+                     join product in dbContext.Products
+                         on advertisement.ProductID equals product.ProductID
+                     join productGroup in dbContext.ProductGroups
+                         on product.ProductGroupID equals productGroup.ProductGroupID
+                     select new WishListViewModel
+                     {
+                         WishListId = wishList.WishListID,
+                         AdvertisementId = wishList.AdvertizementID,
+                         ProductId = advertisement.ProductID,
+                         ProductDescription = product.Description,
+                         ProductGroupDescription = productGroup.Description,
+                         Price = advertisement.Price,
+                         StartDate = advertisement.StartDate,
+                         EndDate = advertisement.EndDate
+                     }).ToList<WishListViewModel>();
+                return wishListViewModels;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<ProductGroup> GetProductGroupList()
+        {
+            List<ProductGroup> productGroups;
+
+            productGroups = dbContext.ProductGroups.ToList<ProductGroup>();
+            return productGroups;
         }
     }
 }

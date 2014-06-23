@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OziBazaar.DAL;
 
 namespace OziBazaar.Web.Infrastructure.Repository
 {
@@ -16,6 +17,7 @@ namespace OziBazaar.Web.Infrastructure.Repository
         IEnumerable<Category> GetAllCategories();
         void                  AddProduct(ProductModel product);
         void                  UpdateProduct(ProductModel product);
+        List<WishListViewModel> GetWishList(string userName);
+        List<ProductGroup> GetProductGroupList();
     }
-   
 }

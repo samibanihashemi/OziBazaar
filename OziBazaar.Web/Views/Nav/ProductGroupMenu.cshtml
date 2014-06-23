@@ -1,0 +1,10 @@
+﻿@model IEnumerable<OziBazaar.DAL.ProductGroup>
+
+@foreach (var link in Model) {
+    @Html.RouteLink(link.Description, new {
+         controller = "",
+         action = "",
+    })
+    @Html.HiddenFor(modelItem => link.ProductGroupID)
+}
+
