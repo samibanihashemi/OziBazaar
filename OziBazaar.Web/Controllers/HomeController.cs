@@ -10,10 +10,22 @@ namespace OziBazaar.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+       private readonly IProductRepository productRepository;
+
+        public HomeController(IProductRepository productRepository)
         {
-            return View();
+            this.productRepository = productRepository;
+
         }
+
+        public ActionResult Index(string search)
+        {
+            List<SearchViewModel> searchResult = null;
+            if (!string.IsNullOrEmpty(search))
+                searchResult = productRepository.SearchProduct(search.Split(' '));
+            return View(searchResult);
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

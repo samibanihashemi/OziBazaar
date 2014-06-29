@@ -65,6 +65,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="LinqKit">
+      <HintPath>..\..\Dependencies\LinqKit.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
@@ -207,6 +210,7 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\WishListController.cs" />
     <Compile Include="Infrastructure\Repository\IProductRepository.cs" />
+    <Compile Include="Infrastructure\Repository\PredicateBuilder.cs" />
     <Compile Include="Infrastructure\Repository\ProductRepository.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Ad.cs" />
@@ -221,6 +225,7 @@
     <Compile Include="Models\ProductFeatureAdd.cs" />
     <Compile Include="Models\ProductFeatureView.cs" />
     <Compile Include="Models\ProductView.cs" />
+    <Compile Include="Models\SearchViewModel.cs" />
     <Compile Include="Models\WishListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -19,5 +19,6 @@ namespace OziBazaar.Web.Infrastructure.Repository
         void                  UpdateProduct(ProductModel product);
         List<WishListViewModel> GetWishList(string userName);
         List<ProductGroup> GetProductGroupList();
+        List<SearchViewModel> SearchProduct(string[] tags);
     }
 }

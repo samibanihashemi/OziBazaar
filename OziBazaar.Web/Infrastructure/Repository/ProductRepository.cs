@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using OziBazaar.DAL;
+using System.Linq.Expressions;
+using LinqKit;
 
 namespace OziBazaar.Web.Infrastructure.Repository
 {
@@ -36,7 +38,7 @@ namespace OziBazaar.Web.Infrastructure.Repository
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
             /*
             List<ProductFeatureView> productview = new List<ProductFeatureView>();
@@ -278,6 +280,47 @@ namespace OziBazaar.Web.Infrastructure.Repository
 
             productGroups = dbContext.ProductGroups.ToList<ProductGroup>();
             return productGroups;
+        }
+
+        public List<SearchViewModel> SearchProduct(string[] tags)
+        {
+            List<SearchViewModel> searchResult =
+            (from advertisement in dbContext.Advertisements
+            .AsExpandable<Advertisement>().Where(IsCurrent())
+            join product in dbContext.Products
+            on advertisement.ProductID equals product.ProductID
+            join productProperty in dbContext.ProductProperties
+            .AsExpandable<ProductProperty>().Where(ContainsInDescription(tags))
+            on product.ProductID equals productProperty.ProductID
+            select new SearchViewModel
+                {
+                    ProductId = product.ProductID,
+                    ProductDescription = product.Description,
+                    Price = advertisement.Price,
+                    StartDate = advertisement.StartDate,
+                    EndDate = advertisement.EndDate
+                }
+            ).Distinct().ToList();
+            return searchResult;
+        }
+
+        public static Expression<Func<Advertisement, bool>> IsCurrent()
+        {
+            return p => (p.StartDate == null || p.StartDate <= DateTime.Now) &&
+                        (p.EndDate == null || p.EndDate >= DateTime.Now) &&
+                        (p.IsActive == true);
+        }
+    
+        public static Expression<Func<ProductProperty, bool>> ContainsInDescription(
+                                                      params string[] keywords)
+        {
+            var predicate = PredicateBuilder.True<ProductProperty>();
+            foreach (string keyword in keywords)
+            {
+                string temp = keyword;
+                predicate = predicate.And(p => p.Value.Contains(temp));
+            }
+            return predicate;
         }
     }
 }
