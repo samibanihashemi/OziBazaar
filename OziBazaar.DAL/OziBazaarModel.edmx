@@ -161,9 +161,12 @@
             <PropertyRef Name="UserId" />
           </Key>
           <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
-          <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="EmailAddress" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" />
           <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Activated" Type="bit" Nullable="false" />
+          <Property Name="ActivationDate" Type="date" />
           <Property Name="Version" Type="timestamp" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="webpages_Membership">
@@ -381,7 +384,7 @@
           </Key>
           <Property Name="AdvertisementID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
-          <Property Name="Price" Type="Decimal" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="OwnerID" Type="Int32" Nullable="false" />
@@ -585,11 +588,14 @@
             <PropertyRef Name="UserId" />
           </Key>
           <Property Type="Int32" Name="UserId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="UserName" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="EmailAddress" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UserName" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Type="String" Name="EmailAddress" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Type="String" Name="Phone" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Binary" Name="Version" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="webpages_Roles" Relationship="OziBazaarModel.webpages_UsersInRoles" FromRole="UserProfile" ToRole="webpages_Roles" />
+          <Property Type="Boolean" Name="Activated" Nullable="false" />
+          <Property Type="DateTime" Name="ActivationDate" Precision="0" />
+          <Property Type="String" Name="FullName" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="webpages_Membership">
           <Key>
@@ -754,6 +760,9 @@
           <EntitySetMapping Name="UserProfiles">
             <EntityTypeMapping TypeName="OziBazaarModel.UserProfile">
               <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="ActivationDate" ColumnName="ActivationDate" />
+                <ScalarProperty Name="Activated" ColumnName="Activated" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />

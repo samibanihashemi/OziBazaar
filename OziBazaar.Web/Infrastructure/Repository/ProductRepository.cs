@@ -40,28 +40,6 @@ namespace OziBazaar.Web.Infrastructure.Repository
             {
                 throw;
             }
-            /*
-            List<ProductFeatureView> productview = new List<ProductFeatureView>();
-            productview.Add(new ProductFeatureView { ProductId = 1, FeatureName = "Name", FeatureValue = "Mazda33" });
-            productview.Add(new ProductFeatureView { ProductId = 1, FeatureName = "Model", FeatureValue = "Sedan" });
-            productview.Add(new ProductFeatureView { ProductId = 1, FeatureName = "Kilo Meter", FeatureValue = "120,000" });
-            productview.Add(new ProductFeatureView { ProductId = 1, FeatureName = "Rego", FeatureValue = "06/2015" });
-            productview.Add(new ProductFeatureView { ProductId = 1, FeatureName = "Tyre", FeatureValue = "in very good Status" });
-            productview.Add(new ProductFeatureView { ProductId = 1, FeatureName = "Price", FeatureValue = "1000" });
-            productview.Add(new ProductFeatureView { ProductId = 1, FeatureName = "Color", FeatureValue = "Red" });
-            productview.Add(new ProductFeatureView { ProductId = 1, FeatureName = "Year", FeatureValue = "2010" });
-            productview.Add(new ProductFeatureView { ProductId = 1, FeatureName = "Image", FeatureValue = "/Content/Image/mazda1.jpg" });
-            productview.Add(new ProductFeatureView { ProductId = 1, FeatureName = "Image", FeatureValue = "/Content/Image/mazda2.jpg" });
-
-            productview.Add(new ProductFeatureView { ProductId = 2, FeatureName = "Name", FeatureValue = "Mobile" });
-            productview.Add(new ProductFeatureView { ProductId = 2, FeatureName = "Model", FeatureValue = "Galaxy S2" });
-            productview.Add(new ProductFeatureView { ProductId = 2, FeatureName = "Color", FeatureValue = "black" });
-            productview.Add(new ProductFeatureView { ProductId = 2, FeatureName = "Battery Life", FeatureValue = "24 hours" });
-            productview.Add(new ProductFeatureView { ProductId = 2, FeatureName = "Image", FeatureValue = "/Content/Image/mobile1.jpg" });
-            productview.Add(new ProductFeatureView { ProductId = 2, FeatureName = "Image", FeatureValue = "/Content/Image/mobile2.jpg" });
-
-            return new ProductView { Features = productview.Where(x => x.ProductId == productId).ToList() };
-             */ 
         }
 
         public ProductAddView AddProduct(int CategoryId)
@@ -105,35 +83,6 @@ namespace OziBazaar.Web.Infrastructure.Repository
             {
                 throw ex;
             }
-            
-
-            /*
-            ProductAddView product = new ProductAddView();
-            if (CategoryId == 1)// car
-            {
-                product.Features.Add(new ProductFeatureAdd { ProductId = 3, PropertyId = 3, FeatureName = "Model", EditorType = "DropDown", ValueType = "string", IsMandatory = true, ValueEnum = new List<string> { "Toyota", "Mazda", "Ford", "BMW" } });
-                product.Features.Add(new ProductFeatureAdd { ProductId = 3, PropertyId = 5, FeatureName = "Type", EditorType = "DropDown", ValueType = "string", IsMandatory = true, ValueEnum = new List<string> { }, DependsOn = "Model" });
-                product.Features.Add(new ProductFeatureAdd { ProductId = 3, PropertyId = 1, FeatureName = "Name", EditorType = "TextBox", ValueType = "string", IsMandatory = true });
-                product.Features.Add(new ProductFeatureAdd { ProductId = 3, PropertyId = 4, FeatureName = "Description", EditorType = "TextArea", ValueType = "string", IsMandatory = true });
-                product.Features.Add(new ProductFeatureAdd { ProductId = 3, PropertyId = 2, FeatureName = "Color", EditorType = "DropDown", ValueType = "string", IsMandatory = true, ValueEnum = new List<string> { "Red", "Green", "Yellow" } });
-                product.Features.Add(new ProductFeatureAdd { ProductId = 3, PropertyId = 8, FeatureName = "Aumatic", EditorType = "CheckBox", ValueType = "bool", IsMandatory = true });
-                product.Features.Add(new ProductFeatureAdd { ProductId = 3, PropertyId = 9, FeatureName = "Fuel", EditorType = "RadioButton", ValueType = "string", ValueEnum = new List<string> { "Petrol", "Disel", "LPG" } });
-                product.Features.Add(new ProductFeatureAdd { ProductId = 3, PropertyId = 10, FeatureName = "Kilio Metere", EditorType = "TextBox", ValueType = "string" });
-                product.Features.Add(new ProductFeatureAdd { ProductId = 3, PropertyId = 11, FeatureName = "Feul Consumption", EditorType = "TextBox", ValueType = "string", IsMandatory = true });
-            }
-            if (CategoryId == 2)//Mobile
-            {
-                product.Features.Add(new ProductFeatureAdd { ProductId = 4, PropertyId = 1, FeatureName = "Name", EditorType = "TextBox", ValueType = "string", IsMandatory = true });
-                product.Features.Add(new ProductFeatureAdd { ProductId = 4, PropertyId = 4, FeatureName = "Description", EditorType = "TextBox", ValueType = "string", IsMandatory = true });
-                product.Features.Add(new ProductFeatureAdd { ProductId = 4, PropertyId = 2, FeatureName = "Color", EditorType = "DropDown", ValueType = "string", IsMandatory = true, ValueEnum = new List<string> { "Black", "White", "Red" } });
-                product.Features.Add(new ProductFeatureAdd { ProductId = 4, PropertyId = 3, FeatureName = "Model", EditorType = "DropDown", ValueType = "string", IsMandatory = true, ValueEnum = new List<string> { "Iphone", "Samsung", "HTC" } });
-                product.Features.Add(new ProductFeatureAdd { ProductId = 4, PropertyId = 5, FeatureName = "Type", EditorType = "DropDown", ValueType = "string", IsMandatory = true, DependsOn = "Model" });
-                product.Features.Add(new ProductFeatureAdd { ProductId = 4, PropertyId = 6, FeatureName = "Battery Life", EditorType = "TextBox", ValueType = "string", IsMandatory = true });
-                product.Features.Add(new ProductFeatureAdd { ProductId = 4, PropertyId = 7, FeatureName = "HeadSet", EditorType = "CheckBox", ValueType = "bool", IsMandatory = true });
-            }
-
-            return product;
-             */
         }
 
         public IEnumerable<Ad> GetAdvertisementsList()
@@ -157,13 +106,8 @@ namespace OziBazaar.Web.Infrastructure.Repository
             {
                 throw ex;
             }
-            /*
-            List<Ad> ads = new List<Ad>();
-            ads.Add(new Ad() { ProductId = 1, Id = 1, Title = "Good Car" });
-            ads.Add(new Ad() { ProductId = 2, Id = 2, Title = "Good Mobile" });
-            return ads;
-             */
         }
+
         public IEnumerable<Category> GetAllCategories()
         {
             try
@@ -180,13 +124,6 @@ namespace OziBazaar.Web.Infrastructure.Repository
             {
                 throw ex;
             }
-            /*
-            List<Category> categories = new List<Category>();
-            categories.Add(new Category() { Id = 1, Name = "Car" });
-            categories.Add(new Category() { Id = 2, Name = "Mobile" });
-
-            return categories;
-            */
         }
 
         public void AddProduct(ProductModel prod)
@@ -240,6 +177,44 @@ namespace OziBazaar.Web.Infrastructure.Repository
             throw new NotImplementedException();
         }
 
+        public UserProfile GetUser(string userName)
+        {
+            try
+            {
+                UserProfile userProfileModel =
+                    (from userProfile in dbContext.UserProfiles
+                     where userProfile.UserName == userName
+                     select userProfile).FirstOrDefault();
+                return userProfileModel;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool ActivateUser(string userName, string emailAddress)
+        {
+            try
+            {
+                UserProfile userProfileModel = GetUser(userName);
+                if (userProfileModel != null && userProfileModel.EmailAddress == emailAddress)
+                {
+                    userProfileModel.Activated = true;
+                    dbContext.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        
         public List<WishListViewModel> GetWishList(string userName)
         {
             try
@@ -282,17 +257,16 @@ namespace OziBazaar.Web.Infrastructure.Repository
             return productGroups;
         }
 
-        public List<SearchViewModel> SearchProduct(string[] tags)
+        public List<SearchViewModel> SearchProduct(string tag)
         {
             List<SearchViewModel> searchResult =
             (from advertisement in dbContext.Advertisements
-            .AsExpandable<Advertisement>().Where(IsCurrent())
-            join product in dbContext.Products
-            on advertisement.ProductID equals product.ProductID
-            join productProperty in dbContext.ProductProperties
-            .AsExpandable<ProductProperty>().Where(ContainsInDescription(tags))
-            on product.ProductID equals productProperty.ProductID
-            select new SearchViewModel
+             join product in dbContext.Products
+             on advertisement.ProductID equals product.ProductID
+             join productProperty in dbContext.ProductProperties
+             on product.ProductID equals productProperty.ProductID
+             where advertisement.IsActive == true && productProperty.Value == tag
+             select new SearchViewModel
                 {
                     ProductId = product.ProductID,
                     ProductDescription = product.Description,
@@ -302,25 +276,6 @@ namespace OziBazaar.Web.Infrastructure.Repository
                 }
             ).Distinct().ToList();
             return searchResult;
-        }
-
-        public static Expression<Func<Advertisement, bool>> IsCurrent()
-        {
-            return p => (p.StartDate == null || p.StartDate <= DateTime.Now) &&
-                        (p.EndDate == null || p.EndDate >= DateTime.Now) &&
-                        (p.IsActive == true);
-        }
-    
-        public static Expression<Func<ProductProperty, bool>> ContainsInDescription(
-                                                      params string[] keywords)
-        {
-            var predicate = PredicateBuilder.True<ProductProperty>();
-            foreach (string keyword in keywords)
-            {
-                string temp = keyword;
-                predicate = predicate.And(p => p.Value.Contains(temp));
-            }
-            return predicate;
         }
     }
 }

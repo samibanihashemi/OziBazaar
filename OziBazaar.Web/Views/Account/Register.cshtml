@@ -26,6 +26,10 @@
                 @Html.PasswordFor(m => m.ConfirmPassword)
             </li>
             <li>
+                @Html.LabelFor(m => m.FullName)
+                @Html.TextBoxFor(m => m.FullName)
+            </li>
+            <li>
                 @Html.LabelFor(m => m.EmailAddress)
                 @Html.TextBoxFor(m => m.EmailAddress)
             </li>

@@ -18,11 +18,11 @@ namespace OziBazaar.Web.Controllers
 
         }
 
-        public ActionResult Index(string search)
+        public ActionResult Index(string search = "")
         {
             List<SearchViewModel> searchResult = null;
             if (!string.IsNullOrEmpty(search))
-                searchResult = productRepository.SearchProduct(search.Split(' '));
+                searchResult = productRepository.SearchProduct(search);
             return View(searchResult);
         }
 

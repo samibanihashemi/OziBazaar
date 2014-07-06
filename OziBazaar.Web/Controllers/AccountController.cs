@@ -10,12 +10,30 @@ using System.Web.Security;
 using System.Transactions;
 using DotNetOpenAuth.AspNet;
 using OziBazaar.DAL;
+using OziBazaar.Web.Infrastructure.Cryptography;
+using OziBazaar.Web.Infrastructure.Email;
+using OziBazaar.Web.Infrastructure.Repository;
 
 namespace OziBazaar.Web.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        const char separator = ';';
+        private readonly IEncryptionEngine _encryptionEngine;
+        private readonly ISmtpEmail _smtpEmail;
+        private readonly IProductRepository _productRepository;
+
+        public AccountController(
+            IEncryptionEngine encryptionEngine, 
+            ISmtpEmail smtpEmail,
+            IProductRepository productRepository)
+        {
+            _encryptionEngine = encryptionEngine;
+            _smtpEmail = smtpEmail;
+            _productRepository = productRepository;
+        }
+        
         //
         // GET: /Account/Login
 
@@ -34,13 +52,24 @@ namespace OziBazaar.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            UserProfile userProfile = _productRepository.GetUser(model.UserName);
+            if (userProfile != null && userProfile.Activated == true)
             {
-                return RedirectToLocal(returnUrl);
+                if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+                {
+                    return RedirectToLocal(returnUrl);
+                }
+                else
+                {
+                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                }
             }
-
+            else
+            {
+                ModelState.AddModelError("", "Please activate your account.");
+            }
             // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "The user name or password provided is incorrect.");
+            
             return View(model);
         }
 
@@ -82,12 +111,19 @@ namespace OziBazaar.Web.Controllers
                         model.UserName, 
                         model.Password,
                         new 
-                        { 
+                        {
+                            FullName = model.FullName,
                             EmailAddress = model.EmailAddress,
-                            Phone = model.Phone
+                            Phone = model.Phone,
+                            Activated = false
                         },
                         false);
-                    WebSecurity.Login(model.UserName, model.Password);
+                    string activationCode = _encryptionEngine.DESEncrypt(
+                        model.UserName + separator.ToString() + model.EmailAddress);
+                    _smtpEmail.SendActivationEmail(
+                        activationCode,
+                        model.FullName,
+                        model.EmailAddress);
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)
@@ -96,6 +132,73 @@ namespace OziBazaar.Web.Controllers
                 }
             }
 
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        //
+        // Get: /Account/Activate
+        
+        [AllowAnonymous]
+        public ActionResult Activation(string activationCode)
+        {
+            try
+            {
+                string decActivatioCode = _encryptionEngine.DESDecrypt(activationCode);
+                string[] values = decActivatioCode.Split(separator);
+                if (_productRepository.ActivateUser(values[0], values[1]) == true)
+                {
+                    ViewBag.Message = "The account is activated sucessfuly";
+                    return View("Message");
+                }
+                else
+                    return View("Error");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        // GET: /Account/ResetPassword
+
+        [AllowAnonymous]
+        public ActionResult ResetPassword()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Account/ResetPassword
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResetPassword(ResetPasswordModel model)
+        {
+            UserProfile userProfile = _productRepository.GetUser(model.UserName);
+            if (userProfile != null && userProfile.Activated == true)
+            {
+                if (ModelState.IsValid && userProfile.EmailAddress == model.EmailAddress)
+                {
+                    var token = WebSecurity.GeneratePasswordResetToken(model.UserName);
+                    var result = WebSecurity.ResetPassword(token, model.UserName+"1234");
+                    _smtpEmail.SendResetPasswordEmail(
+                        model.UserName + "1234", 
+                        userProfile.FullName, 
+                        model.EmailAddress);
+                    ViewBag.Message = "A new password has been sent to your email address";
+                    return View("Message");                    
+                }
+                else
+                {
+                    ModelState.AddModelError("", "The user name or email address provided is incorrect.");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Please activate your account.");
+            }
             // If we got this far, something failed, redisplay form
             return View(model);
         }

@@ -24,6 +24,9 @@ namespace OziBazaar.DAL
         public string EmailAddress { get; set; }
         public string Phone { get; set; }
         public byte[] Version { get; set; }
+        public bool Activated { get; set; }
+        public Nullable<System.DateTime> ActivationDate { get; set; }
+        public string FullName { get; set; }
     
         public virtual ICollection<webpages_Roles> webpages_Roles { get; set; }
     }

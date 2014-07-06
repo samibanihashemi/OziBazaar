@@ -209,13 +209,17 @@
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\WishListController.cs" />
+    <Compile Include="Infrastructure\Cryptography\EncryptionEngine.cs" />
+    <Compile Include="Infrastructure\Cryptography\IEncryptionEngine.cs" />
+    <Compile Include="Infrastructure\Email\SmtpEmail.cs" />
+    <Compile Include="Infrastructure\Email\ISmtpEmail.cs" />
     <Compile Include="Infrastructure\Repository\IProductRepository.cs" />
-    <Compile Include="Infrastructure\Repository\PredicateBuilder.cs" />
     <Compile Include="Infrastructure\Repository\ProductRepository.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Ad.cs" />
     <Compile Include="Models\AdStatistic.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\EmailSetting.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -230,8 +234,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="Content\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\Image\mazda1.jpg" />
     <Content Include="Content\Image\mazda2.jpg" />
     <Content Include="Content\Image\mobile1.jpg" />
@@ -366,6 +376,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\WishList\Index.cshtml" />
     <Content Include="Views\Nav\ProductGroupMenu.cshtml" />
+    <Content Include="Views\Account\Message.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OziBazaar.DAL\OziBazaar.DAL.csproj">

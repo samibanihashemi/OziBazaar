@@ -66,6 +66,12 @@ namespace OziBazaar.Web.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Fullname")]
+        public string FullName { get; set; }
+
+        [Required]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email Address")]
         public string EmailAddress { get; set; }
@@ -73,6 +79,18 @@ namespace OziBazaar.Web.Models
         [DataType(DataType.PhoneNumber)]
         [Display(Name = "Phone")]
         public string Phone { get; set; }
+    }
+
+    public class ResetPasswordModel
+    {
+        [Required]
+        [Display(Name = "User name")]
+        public string UserName { get; set; }
+
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email Address")]
+        public string EmailAddress { get; set; }
     }
 
     public class ExternalLogin

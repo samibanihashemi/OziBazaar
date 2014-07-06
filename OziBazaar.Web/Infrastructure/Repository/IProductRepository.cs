@@ -10,15 +10,17 @@ namespace OziBazaar.Web.Infrastructure.Repository
 {
     public interface IProductRepository
     {
-        ProductView           GetProduct(int productId);
-        ProductAddView        AddProduct(int CategoryId);
-        ProductEditView       EditProduct(int productId);       
-        IEnumerable<Ad>       GetAdvertisementsList();
+        ProductView GetProduct(int productId);
+        ProductAddView AddProduct(int CategoryId);
+        ProductEditView EditProduct(int productId);       
+        IEnumerable<Ad> GetAdvertisementsList();
         IEnumerable<Category> GetAllCategories();
-        void                  AddProduct(ProductModel product);
-        void                  UpdateProduct(ProductModel product);
+        void AddProduct(ProductModel product);
+        void UpdateProduct(ProductModel product);
+        UserProfile GetUser(string userName);
+        bool ActivateUser(string userName, string emailAddress);
         List<WishListViewModel> GetWishList(string userName);
         List<ProductGroup> GetProductGroupList();
-        List<SearchViewModel> SearchProduct(string[] tags);
+        List<SearchViewModel> SearchProduct(string tag);
     }
 }
