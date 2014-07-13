@@ -100,8 +100,10 @@ namespace OziBazaar.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterModel model)
+        public ActionResult Register(RegisterModel model, CaptchaViewModel captchaViewModel)
         {
+            if (model.CaptchaInput.Trim().ToLower() != captchaViewModel.CaptchaText.Trim().ToLower())
+                ModelState.AddModelError("Wrong captcha, please try again",new MissingFieldException());
             if (ModelState.IsValid)
             {
                 // Attempt to register the user
@@ -124,7 +126,8 @@ namespace OziBazaar.Web.Controllers
                         activationCode,
                         model.FullName,
                         model.EmailAddress);
-                    return RedirectToAction("Index", "Home");
+                    ViewBag.Message = "An activation email sent to your email address";
+                    return View("Message");                    
                 }
                 catch (MembershipCreateUserException e)
                 {

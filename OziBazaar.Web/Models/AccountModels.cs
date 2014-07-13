@@ -79,6 +79,10 @@ namespace OziBazaar.Web.Models
         [DataType(DataType.PhoneNumber)]
         [Display(Name = "Phone")]
         public string Phone { get; set; }
+
+        [DataType(DataType.Text)]
+        [Display(Name = "CaptchaInput")]
+        public string CaptchaInput { get; set; }
     }
 
     public class ResetPasswordModel

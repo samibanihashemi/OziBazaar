@@ -9,6 +9,8 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Unity.WebApi;
 using OziBazaar.Web.App_Start;
+using OziBazaar.Web.Models;
+using OziBazaar.Web.Infrastructure.Binder;
 namespace OziBazaar.Web
 {
     public class MvcApplication : System.Web.HttpApplication
@@ -22,6 +24,7 @@ namespace OziBazaar.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             SecurityConfig.InitializeComponents();
             Bootstrapper.Initialise();
+            ModelBinders.Binders.Add(typeof(CaptchaViewModel), new CaptchaModelBinder());
         }
     }
 }

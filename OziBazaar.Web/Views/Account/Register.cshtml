@@ -12,7 +12,7 @@
 
     <fieldset>
         <legend>Registration Form</legend>
-        <ol>
+        <ul class="unstyled">
             <li>
                 @Html.LabelFor(m => m.UserName)
                 @Html.TextBoxFor(m => m.UserName)
@@ -37,11 +37,29 @@
                 @Html.LabelFor(m => m.Phone)
                 @Html.TextBoxFor(m => m.Phone)
             </li>
-        </ol>
-        <input type="submit" value="Register" />
+            <li>
+               <img id="m_imgCaptcha" alt="Click to Change image" src="" title="Click to Change image"
+                   onclick ="loadCaptcha();" style="width: 200px; height: 50px;" />
+                @Html.TextBoxFor(m => m.CaptchaInput)
+            </li>
+        </ul>
+        <input type="submit" class="btn" value="Register" />
     </fieldset>
 }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+<script type="text/javascript">
+        $(document).ready(function () {
+            loadCaptcha();
+        });
+        function loadCaptcha() {
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("GenerateCaptcha","Helper")',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                cache: false,
+                success: function (data) { $("#m_imgCaptcha").attr('src', '@Url.Content("~/Temp/")' + data); },
+                error: function (data) { alert("Error while loading captcha image") }
+            });
+        }
+</script>
